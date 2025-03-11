@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AIVERSE - Exploring the Future of AI</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      /* CSS Reset and Basic Styles (Improved) */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --primary-color: #007bff;
+        --primary-dark-color: #0056b3;
+        --text-color: #333;
+        --bg-color: #f4f4f4;
+        --secondary-bg-color: #eee;
+        --card-bg-color: #fff;
+        --shadow-color: rgba(0, 0, 0, 0.1);
+        --footer-bg-color: #333;
+        --footer-text-color: white;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; /* Modern font */
+        line-height: 1.7;
+        color: var(--text-color);
+        background-color: var(--bg-color);
+        scroll-behavior: smooth;
+        transition: background-color 0.3s, color 0.3s; /* Smooth transitions for theme change */
+      }
+
+      body.dark-mode {
+        --text-color: #eee;
+        --bg-color: #121212;
+        --secondary-bg-color: #222;
+        --card-bg-color: #333;
+        --shadow-color: rgba(255, 255, 255, 0.1);
+        --footer-bg-color: #000;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      section {
+        padding: 80px 0; /* Increased padding */
+        text-align: center;
+        border-bottom: 1px solid var(--secondary-bg-color); /* Section separator */
+      }
+
+      section:last-of-type {
+        border-bottom: none;
+      }
+
+      h2 {
+        font-size: 3rem; /* Larger heading */
+        margin-bottom: 25px;
+        color: var(--text-color);
+      }
+
+      h3 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+        color: var(--text-color);
+      }
+
+      p {
+        margin-bottom: 25px;
+        color: #666; /* Slightly darker paragraph text */
+      }
+
+      body.dark-mode p {
+        color: #bbb;
+      }
+
+      a {
+        color: var(--primary-color);
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      a:hover {
+        text-decoration: underline;
+        color: var(--primary-dark-color);
+      }
+
+      button {
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        padding: 14px 30px; /* Slightly larger button */
+        border-radius: 7px;
+        cursor: pointer;
+        font-size: 1.1rem;
+        transition: background-color 0.3s, transform 0.2s ease-in-out;
+      }
+
+      button:hover {
+        background-color: var(--primary-dark-color);
+        transform: scale(1.05);
+      }
+
+      /* Header (for toggle) */
+      header {
+        display: flex;
+        justify-content: flex-end;
+        padding: 20px;
+        position: sticky; /* Sticky header */
+        top: 0;
+        background-color: var(--bg-color);
+        z-index: 100;
+        transition: background-color 0.3s;
+      }
+
+      #theme-toggle {
+        background: none;
+        border: none;
+        color: var(--text-color);
+        font-size: 1.5rem;
+        cursor: pointer;
+        transition: color 0.3s;
+      }
+
+      #theme-toggle:hover {
+        color: var(--primary-color);
+      }
+
+      /* Hero Section */
+      #hero {
+        background: linear-gradient(
+          45deg,
+          #e0eafc,
+          #cfdef3
+        ); /* Gradient Background */
+        padding: 180px 0; /* Increased padding */
+        text-align: center;
+        position: relative;
+        overflow: hidden; /* To contain the animation */
+        background-color: #f0f4f8; /* Fallback background color */
+        background-size: 200% 200%; /* For animation */
+        animation: gradientAnimation 15s linear infinite alternate; /* Slower and smoother animation */
+      }
+
+      body.dark-mode #hero {
+        background: linear-gradient(
+          45deg,
+          #1a2980,
+          #26d0ce
+        ); /* Dark mode gradient */
+      }
+
+      #hero-content {
+        position: relative; /* To be above the pseudo-element */
+        z-index: 1;
+        padding: 0 20px; /* Add some padding for smaller screens */
+      }
+
+      #hero h1 {
+        font-size: 4rem; /* Even larger headline */
+        color: var(--text-color);
+        margin-bottom: 25px;
+        line-height: 1.2;
+      }
+
+      #hero p {
+        font-size: 1.3rem;
+        color: #777; /* Lighter subtext */
+        margin-bottom: 40px;
+        max-width: 700px; /* Limit subtext width */
+        margin-left: auto;
+        margin-right: auto;
+      }
+      body.dark-mode #hero p {
+        color: #ccc;
+      }
+
+      /* About Section */
+      #about {
+        background-color: var(--secondary-bg-color);
+      }
+      body.dark-mode #about {
+        background-color: var(--secondary-bg-color);
+      }
+
+      #about .columns {
+        display: grid;
+        grid-template-columns: repeat(
+          auto-fit,
+          minmax(320px, 1fr)
+        ); /* More responsive columns */
+        gap: 30px;
+        margin-top: 50px;
+      }
+
+      #about .column {
+        padding: 30px;
+        border-radius: 10px;
+        background-color: var(--card-bg-color);
+        box-shadow: 0 5px 15px var(--shadow-color); /* More pronounced shadow */
+        transition: background-color 0.3s, box-shadow 0.3s;
+      }
+
+      #about .column i {
+        /* Using Font Awesome Icons now */
+        font-size: 3rem; /* Larger icons */
+        margin-bottom: 20px;
+        color: var(--primary-color); /* Icon color */
+        display: block; /* Ensure proper spacing */
+        text-align: center; /* Center icons */
+      }
+
+      /* Features Section */
+      #features {
+        background-color: var(--bg-color);
+      }
+      body.dark-mode #features {
+        background-color: var(--bg-color);
+      }
+
+      #features .feature-list {
+        display: grid;
+        grid-template-columns: repeat(
+          auto-fit,
+          minmax(350px, 1fr)
+        ); /* Wider feature items */
+        gap: 35px;
+        margin-top: 50px;
+      }
+
+      #features .feature-item {
+        padding: 40px; /* Increased padding */
+        background-color: var(--card-bg-color);
+        border-radius: 10px;
+        box-shadow: 0 5px 15px var(--shadow-color);
+        transition: background-color 0.3s, box-shadow 0.3s;
+      }
+
+      /* How It Works Section */
+      #how-it-works {
+        background-color: var(--secondary-bg-color);
+      }
+      body.dark-mode #how-it-works {
+        background-color: var(--secondary-bg-color);
+      }
+
+      #how-it-works .steps {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 50px;
+        align-items: center; /* Align steps vertically */
+        flex-wrap: wrap; /* Allow steps to wrap on smaller screens */
+      }
+
+      #how-it-works .step {
+        flex: 1;
+        text-align: center;
+        padding: 30px;
+        position: relative; /* For step number positioning */
+        min-width: 250px; /* Minimum width for each step */
+        margin-bottom: 40px; /* Space between steps when wrapped */
+      }
+
+      #how-it-works .step::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        right: 0;
+        width: 50px; /* Length of connector line */
+        height: 3px; /* Thicker line */
+        background-color: #ccc;
+        transform: translateY(-50%);
+        display: block; /* Ensure it's a block element */
+      }
+
+      #how-it-works .step:last-child::before {
+        display: none; /* Hide connector after last step */
+      }
+
+      #how-it-works .step:nth-child(even)::before {
+        /* Adjust connector position for even steps if needed in vertical layout */
+        right: auto;
+        left: 0;
+      }
+
+      #how-it-works .step-number {
+        display: inline-block;
+        width: 50px; /* Larger step number circle */
+        height: 50px;
+        border-radius: 50%;
+        background-color: var(--primary-color);
+        color: white;
+        line-height: 50px;
+        font-weight: bold;
+        font-size: 1.3rem;
+        margin-bottom: 20px;
+      }
+
+      /* Use Cases Section */
+      #use-cases {
+        background-color: var(--bg-color);
+      }
+      body.dark-mode #use-cases {
+        background-color: var(--bg-color);
+      }
+
+      #use-cases .use-case-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 35px;
+        margin-top: 50px;
+      }
+
+      #use-cases .use-case-item {
+        padding: 40px;
+        background-color: var(--card-bg-color);
+        border-radius: 10px;
+        box-shadow: 0 5px 15px var(--shadow-color);
+        transition: background-color 0.3s, box-shadow 0.3s;
+      }
+
+      /* Testimonials Section */
+      #testimonials {
+        background-color: var(--secondary-bg-color);
+      }
+      body.dark-mode #testimonials {
+        background-color: var(--secondary-bg-color);
+      }
+
+      #testimonials .testimonial-list {
+        display: grid;
+        grid-template-columns: repeat(
+          auto-fit,
+          minmax(450px, 1fr)
+        ); /* Wider testimonials */
+        gap: 35px;
+        margin-top: 50px;
+      }
+
+      #testimonials .testimonial-item {
+        padding: 40px;
+        background-color: var(--card-bg-color);
+        border-radius: 10px;
+        box-shadow: 0 5px 15px var(--shadow-color);
+        font-style: italic;
+        transition: background-color 0.3s, box-shadow 0.3s;
+      }
+
+      #testimonials .testimonial-author {
+        font-style: normal;
+        font-weight: bold;
+        margin-top: 20px;
+        color: var(--text-color);
+      }
+
+      /* Community & Blog Section */
+      #community-blog {
+        background-color: var(--bg-color);
+      }
+      body.dark-mode #community-blog {
+        background-color: var(--bg-color);
+      }
+
+      #community-blog .blog-preview {
+        margin-top: 50px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        gap: 35px;
+      }
+
+      #community-blog .blog-item {
+        background-color: var(--card-bg-color);
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px var(--shadow-color);
+        margin-bottom: 0; /* Removed extra bottom margin */
+        transition: background-color 0.3s, box-shadow 0.3s;
+      }
+
+      #community-blog .blog-item h3 {
+        margin-bottom: 15px;
+      }
+
+      #community-blog .blog-item a {
+        display: inline-block;
+        margin-top: 15px;
+      }
+
+      /* Contact Section */
+      #contact {
+        background-color: var(--secondary-bg-color);
+      }
+      body.dark-mode #contact {
+        background-color: var(--secondary-bg-color);
+      }
+
+      #contact form {
+        max-width: 700px; /* Wider form */
+        margin: 50px auto 0;
+        text-align: left;
+        padding: 30px;
+        background-color: var(--card-bg-color);
+        border-radius: 10px;
+        box-shadow: 0 5px 15px var(--shadow-color);
+        transition: background-color 0.3s, box-shadow 0.3s;
+      }
+
+      #contact label {
+        display: block;
+        margin-bottom: 10px;
+        font-weight: bold;
+        color: var(--text-color);
+      }
+
+      #contact input[type="text"],
+      #contact input[type="email"],
+      #contact textarea {
+        width: 100%;
+        padding: 12px; /* Larger input padding */
+        margin-bottom: 25px;
+        border: 1px solid #ddd;
+        border-radius: 7px;
+        font-size: 1rem;
+        background-color: var(--bg-color); /* Match input background to body */
+        color: var(--text-color);
+        transition: border-color 0.3s, background-color 0.3s, color 0.3s;
+      }
+      body.dark-mode #contact input[type="text"],
+      body.dark-mode #contact input[type="email"],
+      body.dark-mode #contact textarea {
+        border-color: #555;
+        background-color: #222;
+      }
+
+      #contact textarea {
+        height: 180px; /* Taller textarea */
+      }
+
+      #contact button[type="submit"] {
+        display: block; /* Make button full width */
+        width: 100%;
+        margin-top: 10px;
+      }
+
+      #contact .social-links {
+        margin-top: 40px;
+        text-align: center; /* Center social links */
+      }
+
+      #contact .social-links a {
+        display: inline-block;
+        margin: 0 15px;
+        font-size: 2rem; /* Larger social icons */
+        color: #777;
+        transition: color 0.3s;
+      }
+      #contact .social-links a:hover {
+        color: var(--primary-color);
+      }
+
+      #contact p {
+        margin-top: 30px;
+      }
+
+      /* Footer */
+      footer {
+        background-color: var(--footer-bg-color);
+        color: var(--footer-text-color);
+        padding: 40px 0; /* Increased footer padding */
+        text-align: center;
+        font-size: 0.95rem;
+      }
+
+      footer a {
+        color: var(--footer-text-color);
+        margin: 0 20px; /* Increased link spacing */
+      }
+      footer a:hover {
+        text-decoration: underline; /* Keep underline on hover in footer */
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        section {
+          padding: 60px 0;
+        }
+
+        h2 {
+          font-size: 2.7rem;
+        }
+
+        #hero {
+          padding: 150px 0;
+        }
+
+        #hero h1 {
+          font-size: 3rem;
+        }
+        #hero p {
+          font-size: 1.2rem;
+        }
+
+        #about .columns,
+        #features .feature-list,
+        #how-it-works .steps,
+        #use-cases .use-case-list,
+        #testimonials .testimonial-list,
+        #community-blog .blog-preview {
+          display: block; /* Stack columns on smaller screens */
+        }
+
+        #about .column,
+        #features .feature-item,
+        #how-it-works .step,
+        #use-cases .use-case-item,
+        #testimonials .testimonial-item,
+        #community-blog .blog-item {
+          margin-bottom: 40px;
+        }
+
+        #how-it-works .step::before {
+          display: none; /* Hide connectors in vertical layout */
+        }
+
+        #contact form {
+          padding: 25px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <button id="theme-toggle" aria-label="Toggle Dark Mode">
+        <i class="fas fa-moon"></i>
+      </button>
+    </header>
+
+    <section id="hero">
+      <div id="hero-content" class="container">
+        <h1>Exploring the Future of AI with AIVERSE</h1>
+        <p>
+          A hub for AI innovation, research, and smart automation. Dive into the
+          world of Artificial Intelligence and discover how AIVERSE is shaping
+          the future.
+        </p>
+        <button onclick="location.href='#about'">Get Started</button>
+      </div>
+    </section>
+
+    <section id="about" class="container">
+      <h2>About AIVERSE</h2>
+      <p>
+        Our mission is to democratize AI, making it accessible and beneficial
+        for everyone. We envision a future where AI empowers individuals and
+        organizations to solve complex problems and drive innovation
+        responsibly. We focus on:
+      </p>
+      <div class="columns">
+        <div class="column">
+          <i class="fas fa-search"></i>
+          <h3>AI Research</h3>
+          <p>
+            Dedicated to pushing the boundaries of AI knowledge through
+            cutting-edge research and development. We explore new algorithms,
+            models, and applications.
+          </p>
+        </div>
+        <div class="column">
+          <i class="fas fa-code"></i>
+          <h3>Ethical AI Development</h3>
+          <p>
+            Committed to developing AI solutions that are fair, transparent, and
+            aligned with human values. We prioritize responsible AI practices.
+          </p>
+        </div>
+        <div class="column">
+          <i class="fas fa-rocket"></i>
+          <h3>Future-Ready AI Solutions</h3>
+          <p>
+            Providing innovative AI tools and platforms designed to meet the
+            challenges of tomorrow. We prepare you for the AI-driven future.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="container">
+      <h2>Key Features & Benefits</h2>
+      <div class="feature-list">
+        <div class="feature-item">
+          <h3>AI Research Hub</h3>
+          <p>
+            Stay updated with the latest advancements, publications, and
+            breakthroughs in the AI field. Access a curated collection of AI
+            knowledge.
+          </p>
+        </div>
+        <div class="feature-item">
+          <h3>Smart Automation</h3>
+          <p>
+            Utilize AI-powered tools to automate tasks, optimize workflows, and
+            enhance overall productivity. Streamline your processes with
+            intelligent automation.
+          </p>
+        </div>
+        <div class="feature-item">
+          <h3>Ethical AI Framework</h3>
+          <p>
+            Ensure your AI projects adhere to ethical guidelines and promote
+            responsible AI practices. Develop AI with a conscience.
+          </p>
+        </div>
+        <div class="feature-item">
+          <h3>AI Community</h3>
+          <p>
+            Connect with fellow AI enthusiasts, researchers, and developers to
+            collaborate and share ideas. Join a vibrant community of AI
+            innovators.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="how-it-works" class="container">
+      <h2>How AIVERSE Works</h2>
+      <div class="steps">
+        <div class="step">
+          <span class="step-number">1</span>
+          <h3>Research AI Innovations</h3>
+          <p>
+            Explore our extensive library of AI research and latest
+            breakthroughs. Stay informed and ahead of the curve.
+          </p>
+        </div>
+        <div class="step">
+          <span class="step-number">2</span>
+          <h3>Apply AI Solutions</h3>
+          <p>
+            Implement our ready-to-use AI solutions to solve real-world
+            problems. Put AI into action quickly and effectively.
+          </p>
+        </div>
+        <div class="step">
+          <span class="step-number">3</span>
+          <h3>Collaborate with Experts</h3>
+          <p>
+            Engage with our community and AI experts for guidance and support.
+            Learn from the best and grow together.
+          </p>
+        </div>
+        <div class="step">
+          <span class="step-number">4</span>
+          <h3>Build the Future</h3>
+          <p>
+            Contribute to the future of AI innovation and shape the
+            technological landscape. Be a part of the AI revolution.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="use-cases" class="container">
+      <h2>Use Cases - Where AIVERSE Helps</h2>
+      <div class="use-case-list">
+        <div class="use-case-item">
+          <h3>AI in Healthcare</h3>
+          <p>
+            From smart diagnostics to automated patient care, revolutionizing
+            healthcare with AI. Improve patient outcomes and efficiency.
+          </p>
+        </div>
+        <div class="use-case-item">
+          <h3>AI in Business</h3>
+          <p>
+            Enhance decision-making, streamline operations, and boost efficiency
+            with AI-driven solutions. Drive growth and innovation.
+          </p>
+        </div>
+        <div class="use-case-item">
+          <h3>AI in Education</h3>
+          <p>
+            Personalized learning experiences and AI-powered assistants to
+            transform education. Make learning more engaging and effective.
+          </p>
+        </div>
+        <div class="use-case-item">
+          <h3>AI in Creativity</h3>
+          <p>
+            Unleash AI's creative potential in art, music, content generation,
+            and more. Explore new frontiers of creative expression.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="testimonials" class="container">
+      <h2>Testimonials & Success Stories</h2>
+      <div class="testimonial-list">
+        <div class="testimonial-item">
+          <p>
+            "AIVERSE helped me build AI models 10x faster! The resources and
+            community support are incredible. It's a game-changer for my
+            research workflow."
+          </p>
+          <p class="testimonial-author">- Dr. Alex Reed, AI Scientist</p>
+        </div>
+        <div class="testimonial-item">
+          <p>
+            "AI-powered automation from AIVERSE saved our company 30% in costs!
+            It's not just about cost savings, but also about increased
+            productivity and innovation."
+          </p>
+          <p class="testimonial-author">- Emma Li, Tech CEO</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="community-blog" class="container">
+      <h2>Community & Blog - Learn & Connect</h2>
+      <div class="blog-preview">
+        <div class="blog-item">
+          <h3>Latest AI News: Breakthrough in Neural Networks</h3>
+          <p>
+            Discover the newest advancements in neural network technology and
+            their potential impact. Stay informed about the cutting edge of AI.
+          </p>
+          <a href="#">Read More <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="blog-item">
+          <h3>Research Article: Ethical Considerations in AI Development</h3>
+          <p>
+            An in-depth analysis of the ethical challenges and responsibilities
+            in building AI systems. Understand the ethical dimensions of AI.
+          </p>
+          <a href="#">Read More <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <p>
+        Join the AIVERSE AI Community Forum:
+        <a href="#"
+          >[Link to Forum/Discord] <i class="fas fa-external-link-alt"></i
+        ></a>
+      </p>
+    </section>
+
+    <section id="contact" class="container">
+      <h2>Contact Us</h2>
+      <form action="#" method="post">
+        <div>
+          <label for="name">Name</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Your Name"
+            required
+          />
+        </div>
+        <div>
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Your Email"
+            required
+          />
+        </div>
+        <div>
+          <label for="message">Message</label>
+          <textarea
+            id="message"
+            name="message"
+            placeholder="Your Message"
+            required
+          ></textarea>
+        </div>
+        <button type="submit">Send Message</button>
+      </form>
+      <div class="social-links">
+        <a href="#" target="_blank" aria-label="LinkedIn"
+          ><i class="fab fa-linkedin"></i
+        ></a>
+        <a href="#" target="_blank" aria-label="Twitter"
+          ><i class="fab fa-twitter"></i
+        ></a>
+        <a href="#" target="_blank" aria-label="GitHub"
+          ><i class="fab fa-github"></i
+        ></a>
+      </div>
+      <p>Email: <a href="mailto:contact@aiverse.com">contact@aiverse.com</a></p>
+    </section>
+
+    <footer>
+      <div class="container">
+        <p>Copyright © AIVERSE 2025</p>
+        <p>
+          <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> |
+          <a href="#">Blog</a> | <a href="#">Community</a> |
+          <a href="#">Contact</a>
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      // Smooth scrolling for navigation links (if you had navigation)
+      // For one-page, `scroll-behavior: smooth` in CSS is sufficient and simpler.
+      // If you need more control, you can use JavaScript smooth scrolling here.
+
+      // Dark/Light Mode Toggle
+      const themeToggleBtn = document.getElementById("theme-toggle");
+      const body = document.body;
+      const moonIcon = themeToggleBtn.querySelector(".fa-moon");
+      const sunIcon = document.createElement("i");
+      sunIcon.classList.add("fas", "fa-sun");
+      sunIcon.style.display = "none"; // Initially hide sun icon
+      themeToggleBtn.appendChild(sunIcon);
+
+      // Function to toggle dark mode
+      function toggleDarkMode() {
+        body.classList.toggle("dark-mode");
+        moonIcon.style.display = body.classList.contains("dark-mode")
+          ? "none"
+          : "inline-block";
+        sunIcon.style.display = body.classList.contains("dark-mode")
+          ? "inline-block"
+          : "none";
+
+        // Store the user's preference in localStorage
+        if (body.classList.contains("dark-mode")) {
+          localStorage.setItem("theme", "dark");
+        } else {
+          localStorage.setItem("theme", "light");
+        }
+      }
+
+      // Event listener for the theme toggle button
+      themeToggleBtn.addEventListener("click", toggleDarkMode);
+
+      // Check for user's preferred theme on page load
+      const currentTheme = localStorage.getItem("theme");
+      if (currentTheme === "dark") {
+        body.classList.add("dark-mode");
+        moonIcon.style.display = "none";
+        sunIcon.style.display = "inline-block";
+      } else if (currentTheme === "light") {
+        body.classList.remove("dark-mode");
+        moonIcon.style.display = "inline-block";
+        sunIcon.style.display = "none";
+      } else if (
+        window.matchMedia &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches
+      ) {
+        // Default to dark mode if system preference is dark and no theme is stored
+        body.classList.add("dark-mode");
+        moonIcon.style.display = "none";
+        sunIcon.style.display = "inline-block";
+        localStorage.setItem("theme", "dark"); // Optionally save this preference
+      }
+    </script>
+  </body>
+</html>
