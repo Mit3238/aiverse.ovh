@@ -12,7 +12,7 @@
       referrerpolicy="no-referrer"
     />
     <style>
-      /* CSS Reset and Basic Styles (Improved) */
+      /* CSS Reset and Basic Styles (Improved) - Same as before with minor adjustments for logo */
       *,
       *::before,
       *::after {
@@ -34,12 +34,12 @@
       }
 
       body {
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; /* Modern font */
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
         line-height: 1.7;
         color: var(--text-color);
         background-color: var(--bg-color);
         scroll-behavior: smooth;
-        transition: background-color 0.3s, color 0.3s; /* Smooth transitions for theme change */
+        transition: background-color 0.3s, color 0.3s;
       }
 
       body.dark-mode {
@@ -58,9 +58,9 @@
       }
 
       section {
-        padding: 80px 0; /* Increased padding */
+        padding: 80px 0;
         text-align: center;
-        border-bottom: 1px solid var(--secondary-bg-color); /* Section separator */
+        border-bottom: 1px solid var(--secondary-bg-color);
       }
 
       section:last-of-type {
@@ -68,7 +68,7 @@
       }
 
       h2 {
-        font-size: 3rem; /* Larger heading */
+        font-size: 3rem;
         margin-bottom: 25px;
         color: var(--text-color);
       }
@@ -81,7 +81,7 @@
 
       p {
         margin-bottom: 25px;
-        color: #666; /* Slightly darker paragraph text */
+        color: #666;
       }
 
       body.dark-mode p {
@@ -103,7 +103,7 @@
         background-color: var(--primary-color);
         color: white;
         border: none;
-        padding: 14px 30px; /* Slightly larger button */
+        padding: 14px 30px;
         border-radius: 7px;
         cursor: pointer;
         font-size: 1.1rem;
@@ -115,16 +115,24 @@
         transform: scale(1.05);
       }
 
-      /* Header (for toggle) */
+      /* Header (for toggle and logo) */
       header {
         display: flex;
-        justify-content: flex-end;
+        justify-content: space-between; /* Space between logo and toggle */
+        align-items: center; /* Vertically align logo and toggle */
         padding: 20px;
-        position: sticky; /* Sticky header */
+        position: sticky;
         top: 0;
         background-color: var(--bg-color);
         z-index: 100;
         transition: background-color 0.3s;
+      }
+
+      .logo {
+        font-size: 1.8rem;
+        font-weight: bold;
+        color: var(--primary-color); /* Logo color */
+        text-decoration: none; /* Remove underline from logo link if needed */
       }
 
       #theme-toggle {
@@ -142,36 +150,28 @@
 
       /* Hero Section */
       #hero {
-        background: linear-gradient(
-          45deg,
-          #e0eafc,
-          #cfdef3
-        ); /* Gradient Background */
-        padding: 180px 0; /* Increased padding */
+        background: linear-gradient(45deg, #e0eafc, #cfdef3);
+        padding: 180px 0;
         text-align: center;
         position: relative;
-        overflow: hidden; /* To contain the animation */
-        background-color: #f0f4f8; /* Fallback background color */
-        background-size: 200% 200%; /* For animation */
-        animation: gradientAnimation 15s linear infinite alternate; /* Slower and smoother animation */
+        overflow: hidden;
+        background-color: #f0f4f8;
+        background-size: 200% 200%;
+        animation: gradientAnimation 15s linear infinite alternate;
       }
 
       body.dark-mode #hero {
-        background: linear-gradient(
-          45deg,
-          #1a2980,
-          #26d0ce
-        ); /* Dark mode gradient */
+        background: linear-gradient(45deg, #1a2980, #26d0ce);
       }
 
       #hero-content {
-        position: relative; /* To be above the pseudo-element */
+        position: relative;
         z-index: 1;
-        padding: 0 20px; /* Add some padding for smaller screens */
+        padding: 0 20px;
       }
 
       #hero h1 {
-        font-size: 4rem; /* Even larger headline */
+        font-size: 4rem;
         color: var(--text-color);
         margin-bottom: 25px;
         line-height: 1.2;
@@ -179,9 +179,9 @@
 
       #hero p {
         font-size: 1.3rem;
-        color: #777; /* Lighter subtext */
+        color: #777;
         margin-bottom: 40px;
-        max-width: 700px; /* Limit subtext width */
+        max-width: 700px;
         margin-left: auto;
         margin-right: auto;
       }
@@ -199,10 +199,7 @@
 
       #about .columns {
         display: grid;
-        grid-template-columns: repeat(
-          auto-fit,
-          minmax(320px, 1fr)
-        ); /* More responsive columns */
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
         gap: 30px;
         margin-top: 50px;
       }
@@ -211,17 +208,16 @@
         padding: 30px;
         border-radius: 10px;
         background-color: var(--card-bg-color);
-        box-shadow: 0 5px 15px var(--shadow-color); /* More pronounced shadow */
+        box-shadow: 0 5px 15px var(--shadow-color);
         transition: background-color 0.3s, box-shadow 0.3s;
       }
 
       #about .column i {
-        /* Using Font Awesome Icons now */
-        font-size: 3rem; /* Larger icons */
+        font-size: 3rem;
         margin-bottom: 20px;
-        color: var(--primary-color); /* Icon color */
-        display: block; /* Ensure proper spacing */
-        text-align: center; /* Center icons */
+        color: var(--primary-color);
+        display: block;
+        text-align: center;
       }
 
       /* Features Section */
@@ -234,16 +230,13 @@
 
       #features .feature-list {
         display: grid;
-        grid-template-columns: repeat(
-          auto-fit,
-          minmax(350px, 1fr)
-        ); /* Wider feature items */
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
         gap: 35px;
         margin-top: 50px;
       }
 
       #features .feature-item {
-        padding: 40px; /* Increased padding */
+        padding: 40px;
         background-color: var(--card-bg-color);
         border-radius: 10px;
         box-shadow: 0 5px 15px var(--shadow-color);
@@ -262,17 +255,17 @@
         display: flex;
         justify-content: space-around;
         margin-top: 50px;
-        align-items: center; /* Align steps vertically */
-        flex-wrap: wrap; /* Allow steps to wrap on smaller screens */
+        align-items: center;
+        flex-wrap: wrap;
       }
 
       #how-it-works .step {
         flex: 1;
         text-align: center;
         padding: 30px;
-        position: relative; /* For step number positioning */
-        min-width: 250px; /* Minimum width for each step */
-        margin-bottom: 40px; /* Space between steps when wrapped */
+        position: relative;
+        min-width: 250px;
+        margin-bottom: 40px;
       }
 
       #how-it-works .step::before {
@@ -280,26 +273,25 @@
         position: absolute;
         top: 50%;
         right: 0;
-        width: 50px; /* Length of connector line */
-        height: 3px; /* Thicker line */
+        width: 50px;
+        height: 3px;
         background-color: #ccc;
         transform: translateY(-50%);
-        display: block; /* Ensure it's a block element */
+        display: block;
       }
 
       #how-it-works .step:last-child::before {
-        display: none; /* Hide connector after last step */
+        display: none;
       }
 
       #how-it-works .step:nth-child(even)::before {
-        /* Adjust connector position for even steps if needed in vertical layout */
         right: auto;
         left: 0;
       }
 
       #how-it-works .step-number {
         display: inline-block;
-        width: 50px; /* Larger step number circle */
+        width: 50px;
         height: 50px;
         border-radius: 50%;
         background-color: var(--primary-color);
@@ -326,11 +318,21 @@
       }
 
       #use-cases .use-case-item {
-        padding: 40px;
+        padding: 20px; /* Reduced padding for image and text alignment */
         background-color: var(--card-bg-color);
         border-radius: 10px;
         box-shadow: 0 5px 15px var(--shadow-color);
         transition: background-color 0.3s, box-shadow 0.3s;
+        display: flex; /* Use flexbox to align image and text */
+        flex-direction: column; /* Stack image and text vertically */
+        align-items: center; /* Center items horizontally */
+      }
+
+      #use-cases .use-case-item img {
+        max-width: 100%; /* Image takes full width of the item */
+        height: auto;
+        border-radius: 8px;
+        margin-bottom: 15px; /* Space between image and text */
       }
 
       /* Testimonials Section */
@@ -343,10 +345,7 @@
 
       #testimonials .testimonial-list {
         display: grid;
-        grid-template-columns: repeat(
-          auto-fit,
-          minmax(450px, 1fr)
-        ); /* Wider testimonials */
+        grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
         gap: 35px;
         margin-top: 50px;
       }
@@ -384,11 +383,20 @@
 
       #community-blog .blog-item {
         background-color: var(--card-bg-color);
-        padding: 30px;
+        padding: 20px; /* Reduced padding for image and text */
         border-radius: 10px;
         box-shadow: 0 5px 15px var(--shadow-color);
-        margin-bottom: 0; /* Removed extra bottom margin */
+        margin-bottom: 0;
         transition: background-color 0.3s, box-shadow 0.3s;
+        display: flex; /* Flexbox for image and text alignment */
+        flex-direction: column; /* Stack image and text vertically */
+      }
+
+      #community-blog .blog-item img {
+        max-width: 100%; /* Image takes full width */
+        height: auto;
+        border-radius: 8px;
+        margin-bottom: 15px; /* Space between image and text */
       }
 
       #community-blog .blog-item h3 {
@@ -409,7 +417,7 @@
       }
 
       #contact form {
-        max-width: 700px; /* Wider form */
+        max-width: 700px;
         margin: 50px auto 0;
         text-align: left;
         padding: 30px;
@@ -430,12 +438,12 @@
       #contact input[type="email"],
       #contact textarea {
         width: 100%;
-        padding: 12px; /* Larger input padding */
+        padding: 12px;
         margin-bottom: 25px;
         border: 1px solid #ddd;
         border-radius: 7px;
         font-size: 1rem;
-        background-color: var(--bg-color); /* Match input background to body */
+        background-color: var(--bg-color);
         color: var(--text-color);
         transition: border-color 0.3s, background-color 0.3s, color 0.3s;
       }
@@ -447,24 +455,24 @@
       }
 
       #contact textarea {
-        height: 180px; /* Taller textarea */
+        height: 180px;
       }
 
       #contact button[type="submit"] {
-        display: block; /* Make button full width */
+        display: block;
         width: 100%;
         margin-top: 10px;
       }
 
       #contact .social-links {
         margin-top: 40px;
-        text-align: center; /* Center social links */
+        text-align: center;
       }
 
       #contact .social-links a {
         display: inline-block;
         margin: 0 15px;
-        font-size: 2rem; /* Larger social icons */
+        font-size: 2rem;
         color: #777;
         transition: color 0.3s;
       }
@@ -480,17 +488,17 @@
       footer {
         background-color: var(--footer-bg-color);
         color: var(--footer-text-color);
-        padding: 40px 0; /* Increased footer padding */
+        padding: 40px 0;
         text-align: center;
         font-size: 0.95rem;
       }
 
       footer a {
         color: var(--footer-text-color);
-        margin: 0 20px; /* Increased link spacing */
+        margin: 0 20px;
       }
       footer a:hover {
-        text-decoration: underline; /* Keep underline on hover in footer */
+        text-decoration: underline;
       }
 
       /* Responsive Design */
@@ -520,7 +528,7 @@
         #use-cases .use-case-list,
         #testimonials .testimonial-list,
         #community-blog .blog-preview {
-          display: block; /* Stack columns on smaller screens */
+          display: block;
         }
 
         #about .column,
@@ -533,7 +541,7 @@
         }
 
         #how-it-works .step::before {
-          display: none; /* Hide connectors in vertical layout */
+          display: none;
         }
 
         #contact form {
@@ -544,6 +552,8 @@
   </head>
   <body>
     <header>
+      <a href="#" class="logo">AIVERSE</a>
+      <!-- Logo added here -->
       <button id="theme-toggle" aria-label="Toggle Dark Mode">
         <i class="fas fa-moon"></i>
       </button>
@@ -553,9 +563,10 @@
       <div id="hero-content" class="container">
         <h1>Exploring the Future of AI with AIVERSE</h1>
         <p>
-          A hub for AI innovation, research, and smart automation. Dive into the
-          world of Artificial Intelligence and discover how AIVERSE is shaping
-          the future.
+          AIVERSE is your gateway to the rapidly evolving world of Artificial
+          Intelligence. We are a leading platform dedicated to AI innovation,
+          cutting-edge research, and intelligent automation solutions. Join us
+          to explore, learn, and build the next generation of AI technologies.
         </p>
         <button onclick="location.href='#about'">Get Started</button>
       </div>
@@ -564,35 +575,48 @@
     <section id="about" class="container">
       <h2>About AIVERSE</h2>
       <p>
-        Our mission is to democratize AI, making it accessible and beneficial
-        for everyone. We envision a future where AI empowers individuals and
-        organizations to solve complex problems and drive innovation
-        responsibly. We focus on:
+        At AIVERSE, we are driven by a core mission: to democratize Artificial
+        Intelligence and ensure its benefits are accessible to all. We envision
+        a future where AI is a powerful force for good, empowering individuals,
+        businesses, and communities to tackle the world's most pressing
+        challenges and unlock unprecedented opportunities for innovation and
+        growth. Our focus areas include:
       </p>
       <div class="columns">
         <div class="column">
           <i class="fas fa-search"></i>
           <h3>AI Research</h3>
           <p>
-            Dedicated to pushing the boundaries of AI knowledge through
-            cutting-edge research and development. We explore new algorithms,
-            models, and applications.
+            AIVERSE is at the forefront of AI research, constantly pushing the
+            boundaries of knowledge and discovery. Our research initiatives span
+            a wide spectrum of AI domains, from fundamental algorithms to
+            applied AI in various sectors. We are committed to open research and
+            sharing our findings with the global community to accelerate AI
+            progress.
           </p>
         </div>
         <div class="column">
           <i class="fas fa-code"></i>
           <h3>Ethical AI Development</h3>
           <p>
-            Committed to developing AI solutions that are fair, transparent, and
-            aligned with human values. We prioritize responsible AI practices.
+            We believe that ethical considerations are paramount in the
+            development and deployment of AI technologies. AIVERSE is deeply
+            committed to building AI solutions that are not only powerful but
+            also fair, transparent, and aligned with human values. We champion
+            responsible AI practices and advocate for ethical guidelines in the
+            AI industry.
           </p>
         </div>
         <div class="column">
           <i class="fas fa-rocket"></i>
           <h3>Future-Ready AI Solutions</h3>
           <p>
-            Providing innovative AI tools and platforms designed to meet the
-            challenges of tomorrow. We prepare you for the AI-driven future.
+            AIVERSE provides cutting-edge AI tools, platforms, and solutions
+            designed to equip you for the future. Our innovative offerings are
+            tailored to meet the evolving needs of individuals and organizations
+            in an AI-driven world. We empower you to leverage AI to enhance
+            productivity, drive efficiency, and achieve your strategic
+            objectives.
           </p>
         </div>
       </div>
@@ -604,104 +628,131 @@
         <div class="feature-item">
           <h3>AI Research Hub</h3>
           <p>
-            Stay updated with the latest advancements, publications, and
-            breakthroughs in the AI field. Access a curated collection of AI
-            knowledge.
+            AIVERSE serves as a comprehensive hub for AI research, offering you
+            access to the latest publications, datasets, and breakthroughs from
+            around the globe. Stay informed about emerging trends, explore
+            in-depth research papers, and leverage our resources to advance your
+            own AI projects and knowledge.
           </p>
         </div>
         <div class="feature-item">
           <h3>Smart Automation</h3>
           <p>
-            Utilize AI-powered tools to automate tasks, optimize workflows, and
-            enhance overall productivity. Streamline your processes with
-            intelligent automation.
+            Unlock the power of smart automation with AIVERSE's suite of
+            AI-powered tools. Streamline your workflows, automate repetitive
+            tasks, and optimize processes across various domains. Our automation
+            solutions are designed to boost your productivity, reduce
+            operational costs, and free up valuable time for strategic
+            initiatives.
           </p>
         </div>
         <div class="feature-item">
           <h3>Ethical AI Framework</h3>
           <p>
-            Ensure your AI projects adhere to ethical guidelines and promote
-            responsible AI practices. Develop AI with a conscience.
+            AIVERSE provides a robust Ethical AI Framework to guide the
+            responsible development and deployment of AI systems. Our framework
+            helps you ensure that your AI projects adhere to ethical principles,
+            mitigate potential risks, and promote fairness, accountability, and
+            transparency in all AI applications.
           </p>
         </div>
         <div class="feature-item">
           <h3>AI Community</h3>
           <p>
-            Connect with fellow AI enthusiasts, researchers, and developers to
-            collaborate and share ideas. Join a vibrant community of AI
-            innovators.
+            Become part of a vibrant and collaborative AI Community at AIVERSE.
+            Connect with fellow AI enthusiasts, researchers, developers, and
+            industry experts to share ideas, collaborate on projects, and foster
+            innovation together. Our community is a supportive ecosystem for
+            learning, networking, and advancing the field of AI.
           </p>
         </div>
       </div>
     </section>
 
     <section id="how-it-works" class="container">
-      <h2>How AIVERSE Works</h2>
+      <h2>How AIVERSE Works - Simple Steps to Get Started</h2>
       <div class="steps">
         <div class="step">
           <span class="step-number">1</span>
           <h3>Research AI Innovations</h3>
           <p>
-            Explore our extensive library of AI research and latest
-            breakthroughs. Stay informed and ahead of the curve.
+            Begin by exploring our vast and meticulously curated library of AI
+            research resources. Discover the latest innovations, scientific
+            publications, and groundbreaking studies that are shaping the future
+            of AI.
           </p>
         </div>
         <div class="step">
           <span class="step-number">2</span>
           <h3>Apply AI Solutions</h3>
           <p>
-            Implement our ready-to-use AI solutions to solve real-world
-            problems. Put AI into action quickly and effectively.
+            Leverage AIVERSE's readily available and user-friendly AI solutions
+            to tackle real-world challenges. Implement our pre-built models and
+            tools to address specific needs and drive tangible results in your
+            projects.
           </p>
         </div>
         <div class="step">
           <span class="step-number">3</span>
           <h3>Collaborate with Experts</h3>
           <p>
-            Engage with our community and AI experts for guidance and support.
-            Learn from the best and grow together.
+            Engage with our thriving community of AI experts and fellow
+            enthusiasts. Seek guidance, exchange insights, and collaborate on
+            projects to enhance your understanding and accelerate your AI
+            journey.
           </p>
         </div>
         <div class="step">
           <span class="step-number">4</span>
           <h3>Build the Future</h3>
           <p>
-            Contribute to the future of AI innovation and shape the
-            technological landscape. Be a part of the AI revolution.
+            Contribute to the ongoing evolution of AI by actively participating
+            in AIVERSE initiatives. Share your knowledge, develop new solutions,
+            and help shape the future of artificial intelligence with us.
           </p>
         </div>
       </div>
     </section>
 
     <section id="use-cases" class="container">
-      <h2>Use Cases - Where AIVERSE Helps</h2>
+      <h2>Use Cases - Transforming Industries with AIVERSE</h2>
       <div class="use-case-list">
         <div class="use-case-item">
+          <img src="images/Healthcare.jpg" alt="AI in Healthcare" />
           <h3>AI in Healthcare</h3>
           <p>
-            From smart diagnostics to automated patient care, revolutionizing
-            healthcare with AI. Improve patient outcomes and efficiency.
+            Revolutionizing healthcare through smart diagnostics, personalized
+            treatment plans, and automated patient care systems. AIVERSE helps
+            improve patient outcomes and optimize healthcare operations.
           </p>
         </div>
         <div class="use-case-item">
+          <img src="images/Business.webp" alt="AI in Business" />
           <h3>AI in Business</h3>
           <p>
-            Enhance decision-making, streamline operations, and boost efficiency
-            with AI-driven solutions. Drive growth and innovation.
+            Empowering businesses with AI-driven solutions for enhanced
+            decision-making, streamlined operations, and increased efficiency.
+            AIVERSE helps businesses gain a competitive edge in the market.
           </p>
         </div>
         <div class="use-case-item">
+          <img src="images/edu.png" alt="AI in Education" />
           <h3>AI in Education</h3>
           <p>
-            Personalized learning experiences and AI-powered assistants to
-            transform education. Make learning more engaging and effective.
+            Transforming education with personalized learning experiences,
+            AI-powered learning assistants, and intelligent tutoring systems.
+            AIVERSE makes education more accessible, engaging, and effective for
+            all learners.
           </p>
         </div>
         <div class="use-case-item">
+          <img src="images/Creativity.webp" alt="AI in Creativity" />
           <h3>AI in Creativity</h3>
           <p>
-            Unleash AI's creative potential in art, music, content generation,
-            and more. Explore new frontiers of creative expression.
+            Unleashing the creative potential of AI in art, music, content
+            generation, and innovative design. AIVERSE opens new avenues for
+            creative expression and pushes the boundaries of artistic
+            innovation.
           </p>
         </div>
       </div>
@@ -712,17 +763,21 @@
       <div class="testimonial-list">
         <div class="testimonial-item">
           <p>
-            "AIVERSE helped me build AI models 10x faster! The resources and
-            community support are incredible. It's a game-changer for my
-            research workflow."
+            "AIVERSE has been instrumental in accelerating my AI research. The
+            platform's comprehensive resources and incredibly supportive
+            community have enabled me to build and iterate on AI models at an
+            unprecedented pace. It's truly a game-changer for anyone serious
+            about AI."
           </p>
           <p class="testimonial-author">- Dr. Alex Reed, AI Scientist</p>
         </div>
         <div class="testimonial-item">
           <p>
-            "AI-powered automation from AIVERSE saved our company 30% in costs!
-            It's not just about cost savings, but also about increased
-            productivity and innovation."
+            "Implementing AI-powered automation solutions from AIVERSE has
+            revolutionized our company's efficiency. We've not only achieved
+            significant cost savings, but also witnessed a remarkable boost in
+            productivity and innovation across our teams. AIVERSE is an
+            invaluable partner in our AI journey."
           </p>
           <p class="testimonial-author">- Emma Li, Tech CEO</p>
         </div>
@@ -730,21 +785,33 @@
     </section>
 
     <section id="community-blog" class="container">
-      <h2>Community & Blog - Learn & Connect</h2>
+      <h2>Community & Blog - Stay Informed and Connected</h2>
+      <p>
+        Dive deeper into the world of AI with AIVERSE's Community & Blog
+        section. Here, you can explore the latest AI news, in-depth research
+        articles, and thought-provoking discussions. Stay updated with the
+        rapidly evolving AI landscape and connect with a community of
+        like-minded individuals.
+      </p>
       <div class="blog-preview">
         <div class="blog-item">
+          <img src="images/blog1.webp" alt="Neural Network Breakthrough" />
           <h3>Latest AI News: Breakthrough in Neural Networks</h3>
           <p>
-            Discover the newest advancements in neural network technology and
-            their potential impact. Stay informed about the cutting edge of AI.
+            Read about the groundbreaking advancements in neural network
+            technology that are poised to reshape the future of AI. Understand
+            the implications of these breakthroughs and their potential impact
+            on various industries.
           </p>
           <a href="#">Read More <i class="fas fa-arrow-right"></i></a>
         </div>
         <div class="blog-item">
+          <img src="images/blog2.webp" alt="Ethical AI Considerations" />
           <h3>Research Article: Ethical Considerations in AI Development</h3>
           <p>
-            An in-depth analysis of the ethical challenges and responsibilities
-            in building AI systems. Understand the ethical dimensions of AI.
+            Explore a comprehensive analysis of the critical ethical challenges
+            and responsibilities inherent in the development of AI systems. Gain
+            insights into building AI that is both powerful and ethically sound.
           </p>
           <a href="#">Read More <i class="fas fa-arrow-right"></i></a>
         </div>
@@ -754,11 +821,18 @@
         <a href="#"
           >[Link to Forum/Discord] <i class="fas fa-external-link-alt"></i
         ></a>
+        - Engage in discussions, ask questions, and collaborate with fellow AI
+        enthusiasts.
       </p>
     </section>
 
     <section id="contact" class="container">
-      <h2>Contact Us</h2>
+      <h2>Contact Us - Let's Connect</h2>
+      <p>
+        We'd love to hear from you! Whether you have questions, feedback, or
+        partnership inquiries, please don't hesitate to reach out. Fill out the
+        form below or connect with us through our social media channels.
+      </p>
       <form action="#" method="post">
         <div>
           <label for="name">Name</label>
@@ -807,6 +881,8 @@
 
     <footer>
       <div class="container">
+        <a href="#" class="logo">AIVERSE</a>
+        <!-- Logo in footer as well -->
         <p>Copyright © AIVERSE 2025</p>
         <p>
           <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> |
@@ -817,20 +893,15 @@
     </footer>
 
     <script>
-      // Smooth scrolling for navigation links (if you had navigation)
-      // For one-page, `scroll-behavior: smooth` in CSS is sufficient and simpler.
-      // If you need more control, you can use JavaScript smooth scrolling here.
-
-      // Dark/Light Mode Toggle
+      // Dark/Light Mode Toggle - JavaScript remains the same as before
       const themeToggleBtn = document.getElementById("theme-toggle");
       const body = document.body;
       const moonIcon = themeToggleBtn.querySelector(".fa-moon");
       const sunIcon = document.createElement("i");
       sunIcon.classList.add("fas", "fa-sun");
-      sunIcon.style.display = "none"; // Initially hide sun icon
+      sunIcon.style.display = "none";
       themeToggleBtn.appendChild(sunIcon);
 
-      // Function to toggle dark mode
       function toggleDarkMode() {
         body.classList.toggle("dark-mode");
         moonIcon.style.display = body.classList.contains("dark-mode")
@@ -840,7 +911,6 @@
           ? "inline-block"
           : "none";
 
-        // Store the user's preference in localStorage
         if (body.classList.contains("dark-mode")) {
           localStorage.setItem("theme", "dark");
         } else {
@@ -848,10 +918,8 @@
         }
       }
 
-      // Event listener for the theme toggle button
       themeToggleBtn.addEventListener("click", toggleDarkMode);
 
-      // Check for user's preferred theme on page load
       const currentTheme = localStorage.getItem("theme");
       if (currentTheme === "dark") {
         body.classList.add("dark-mode");
@@ -865,11 +933,10 @@
         window.matchMedia &&
         window.matchMedia("(prefers-color-scheme: dark)").matches
       ) {
-        // Default to dark mode if system preference is dark and no theme is stored
         body.classList.add("dark-mode");
         moonIcon.style.display = "none";
         sunIcon.style.display = "inline-block";
-        localStorage.setItem("theme", "dark"); // Optionally save this preference
+        localStorage.setItem("theme", "dark");
       }
     </script>
   </body>
